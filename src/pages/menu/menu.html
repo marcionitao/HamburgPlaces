@@ -1,0 +1,40 @@
+<ion-menu [content]='menu'>
+  <ion-content>
+    <ion-navbar>
+      <!--<button ion-item menuClose color="danger">
+       <ion-icon name="md-arrow-back" item-left></ion-icon>Menü
+     </button>-->
+     <!--<div class="spacer" style="width: 268px; height: 25px;"></div>-->
+      <div>
+        <img src="assets/img/hamburg_logo.png" style="display: block; width: 100%; height: auto; margin-left: auto; margin-right: auto;">
+      </div>
+    </ion-navbar>
+   
+    <ion-list>
+    
+     <div class="spacer" style="width: 268px; height: 15px;"></div>
+     <button ion-item menuClose (click)="openPage(homePage)">
+       <ion-icon name="pin" item-left color="danger"></ion-icon> Suche in der Nähe
+     </button>
+      <div class="spacer" style="width: 268px; height: 20px;"></div>
+     <button ion-item menuClose (click)="openPage(searchPage)">
+       <ion-icon name="map" item-left color="danger"></ion-icon>Suche Wo und Was?
+     </button>
+      <div class="spacer" style="width: 268px; height: 20px;"></div>
+       <button ion-item menuClose (click)="openPage(aboutPage)">
+       <ion-icon name="apps" item-left color="danger" ></ion-icon>Über
+     </button>
+    </ion-list>
+  </ion-content>
+
+  <ion-footer>
+  <ion-toolbar>
+     <button ion-item menuClose (click)="exit()" color="danger">
+       <ion-icon name="exit" item-left></ion-icon>Schließen
+     </button>
+  </ion-toolbar>
+</ion-footer>
+
+</ion-menu>
+
+<ion-nav #menu [root]="rootPage"></ion-nav>

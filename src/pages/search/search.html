@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-navbar color="danger">
+    <ion-title>Suche Wo und Was?</ion-title>
+    <button ion-button menuToggle>
+      <ion-icon name='menu'></ion-icon>
+    </button>
+  </ion-navbar>
+
+  <ion-row>
+    <ion-col>
+      <form (submit)="setType()">
+        <ion-list>
+          <div class="spacer" style="width: 268px; height: 10px;"></div>
+          <ion-item>
+            <ion-label left>Was?</ion-label>
+            <ion-select [(ngModel)]="tipo" name="tipo" right>
+            <ion-option value="restaurant">Restaurant</ion-option>
+            <ion-option value="food">Essen</ion-option>
+            <ion-option value="bar">Bar</ion-option>
+            <ion-option value="casino">Casino</ion-option>
+            <ion-option value="museum">Museum</ion-option>
+            <ion-option value="hospital">Krankhaus</ion-option>
+            <ion-option value="pharmacy">Apotheke</ion-option>
+            <ion-option value="atm">ATM</ion-option>
+            <ion-option value="bank">Bank</ion-option>
+            <ion-option value="gym">Gym</ion-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item>
+            <ion-label left>Wo?</ion-label>
+            <ion-select [(ngModel)]="onde" name="onde" right>
+              <ion-option value="harburg-hamburg">Harburg</ion-option>
+              <ion-option value="wandsbek-hamburg">Wandsbek</ion-option>
+              <ion-option value="barmbek-hamburg">Barmbek</ion-option>
+              <ion-option value="altona-hamburg">Altona</ion-option>
+              <ion-option value="st.pauli-hamburg">St. Pauli</ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+        <button ion-button block type="submit" color="light">Orte anzeigen</button>
+      </form>
+    </ion-col>
+  </ion-row>
+
+
+</ion-header>
+
+<ion-content>
+
+  <div #map id="map"></div>
+
+</ion-content>

@@ -1,0 +1,39 @@
+<ion-header>
+
+  <ion-navbar color="danger">
+    <ion-title>Suche in der Nähe von mir</ion-title>
+    <button ion-button menuToggle>
+      <ion-icon name='menu'></ion-icon>
+    </button>
+  </ion-navbar>
+  <ion-row>
+    <ion-col>
+
+      <ion-list>
+        <ion-item>
+          <ion-label left>Was suchst du?</ion-label>
+          <ion-select [(ngModel)]="tipo" (ionChange)="setType()" name="tipo" right>
+            <ion-option value="restaurant">Restaurant</ion-option>
+            <ion-option value="food">Essen</ion-option>
+            <ion-option value="bar">Bar</ion-option>
+            <ion-option value="casino">Casino</ion-option>
+            <ion-option value="museum">Museum</ion-option>
+            <ion-option value="hospital">Krankhaus</ion-option>
+            <ion-option value="pharmacy">Apotheke</ion-option>
+            <ion-option value="atm">ATM</ion-option>
+            <ion-option value="bank">Bank</ion-option>
+            <ion-option value="gym">Gym</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+
+      <button ion-button block (click)="setType()" color="light">Orte anzeigen</button>
+    </ion-col>
+  </ion-row>
+</ion-header>
+
+<ion-content>
+
+  <div #map id="map"></div>
+
+</ion-content>

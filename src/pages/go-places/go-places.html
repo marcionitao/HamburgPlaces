@@ -1,0 +1,39 @@
+<ion-header>
+
+  <ion-navbar color="danger">
+    <ion-title id="title">Gehen Sie Platz</ion-title>
+     <ion-buttons right>
+      <button ion-button (click)="retunrHome()"><ion-icon name="home"></ion-icon></button>
+    </ion-buttons>
+  </ion-navbar>
+
+  <ion-row>
+    <ion-col>
+  <ion-list>
+     <ion-item>
+       <ion-label left>Art des Reisens</ion-label>
+         <ion-select [(ngModel)]="mode" (ionChange)="calcRoute()" name="mode" right>
+              <ion-option value="DRIVING">Fahren</ion-option>
+              <ion-option value="WALKING">Gehen</ion-option>
+              <ion-option value="BICYCLING">Fahrrad</ion-option>
+              <ion-option value="TRANSIT">Öffentliche Verkehrsmittel</ion-option>
+         </ion-select>
+     </ion-item>
+   </ion-list>
+
+    </ion-col>
+</ion-row>
+
+</ion-header>
+
+<ion-content scroll="true">
+ 
+  <div #map id="map"></div>
+ 
+  <ion-card>  
+     <ion-card-content>
+        <div #direction id="directionsPanel"></div>
+     </ion-card-content>
+  </ion-card> 
+
+</ion-content>

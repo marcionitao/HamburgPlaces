@@ -1,0 +1,31 @@
+<ion-header>
+
+  <ion-navbar color="danger">
+    <ion-title>Platz</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+
+  <!--Add item list -->
+  <ion-list [virtualScroll]="items">
+    <ion-item *virtualItem="let item" (click)='goPlace(item)'>
+      <ion-icon *ngIf="item.icon" item-left>
+        <img src="{{ item.icon }}" id="icon">
+      </ion-icon>
+      <p id="title">{{ item.name }}</p>
+      <p ion-text color="#a9a9a9">{{ item.formatted_address }}</p>
+      <!-- Error: undefined open_now - Solved with operator Elvis '?'-->
+      <p ion-text color="danger" *ngIf="item.opening_hours?.open_now === false">Es ist jetzt geschlossen</p>
+      <p ion-text color="secondary" *ngIf="item.opening_hours?.open_now === true">Es ist jetzt offen</p>
+      <p id="rating">
+        <!-- Show only If rating >= 1 or != null -->
+        <ion-icon name="thumbs-up"  *ngIf="item.rating >= 1">   {{ item.rating }}</ion-icon>
+      </p>
+      <button ion-button color="light" ion-button outline item-right><ion-icon name="ios-arrow-forward-outline"></ion-icon></button>
+      <!--<button ion-button clear ><ion-icon name="ios-arrow-forward" item-right></ion-icon></button>-->
+    </ion-item>
+  </ion-list>
+
+</ion-content>
