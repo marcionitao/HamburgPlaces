@@ -82,8 +82,8 @@ export class GoPlacesPage {
     //--------------------end origem---------------------------
 
     // get my location
-   this.geolocation.getCurrentPosition({enableHighAccuracy:true, timeout:5000, maximumAge:0}).then((position) => {
-     //this.geolocation.watchPosition().subscribe((position) => {
+   //this.geolocation.getCurrentPosition({enableHighAccuracy:true, timeout:5000, maximumAge:0}).then((position) => {
+    this.geolocation.watchPosition({enableHighAccuracy:true, timeout:5000, maximumAge:0}).subscribe((position) => {
       // this.onde = "home";
       this.directionsDisplay = new google.maps.DirectionsRenderer();
 
@@ -104,12 +104,12 @@ export class GoPlacesPage {
       this.calcRoute();
 
       // update my location in walking
-      this.watch = this.geolocation.watchPosition().subscribe((position) => {
+    /*  this.watch = this.geolocation.watchPosition().subscribe((position) => {
         this.marker = new google.maps.Marker({
             position: this.origem,
             map: this.map,
           });
-      });
+      });*/
     });
     
   }
