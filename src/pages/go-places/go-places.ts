@@ -23,10 +23,12 @@ export class GoPlacesPage {
   map: any;
   item: any;
   destino: any;
-  myOrigem: any;
+  myOrigem: any; // actual location
   mode: any;
   onde: any;
-  origem: any;
+  origem: any; // get lat, lon from Address
+  watch: any;
+  marker: any;
 
   directionsDisplay: any;
   directionsService: any;
@@ -69,7 +71,8 @@ export class GoPlacesPage {
 
     let address = this.onde;
     let geocoder = new google.maps.Geocoder();
-
+   
+    // get address and tranformer in lat, lon
     geocoder.geocode({ 'address': address }, (results, status) => {
       let lat = results[0].geometry.location.lat();
       let lon = results[0].geometry.location.lng();
@@ -79,8 +82,8 @@ export class GoPlacesPage {
     //--------------------end origem---------------------------
 
     // get my location
-   //Geolocation.getCurrentPosition().then((position) => {
-     this.geolocation.watchPosition().subscribe((position) => {
+   this.geolocation.getCurrentPosition({enableHighAccuracy:true, timeout:5000, maximumAge:0}).then((position) => {
+     //this.geolocation.watchPosition().subscribe((position) => {
       // this.onde = "home";
       this.directionsDisplay = new google.maps.DirectionsRenderer();
 
@@ -100,8 +103,13 @@ export class GoPlacesPage {
       // call function for calc route
       this.calcRoute();
 
-    }, (err) => {
-      console.log(err);
+      // update my location in walking
+      this.watch = this.geolocation.watchPosition().subscribe((position) => {
+        this.marker = new google.maps.Marker({
+            position: this.origem,
+            map: this.map,
+          });
+      });
     });
     
   }
@@ -145,9 +153,10 @@ export class GoPlacesPage {
     }
 
   }
-
+ 
   // Return to homePage  
   retunrHome() {
+    this.watch.unsubscribe();
     this.navCtrl.popToRoot();
   }
 
