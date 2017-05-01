@@ -1,7 +1,8 @@
 import { MenuPage } from './../pages/menu/menu';
 import { Component } from '@angular/core';
-import { Platform } from 'ionic-angular';
-import { StatusBar, Splashscreen } from 'ionic-native';
+//import { Platform } from 'ionic-angular';
+import { StatusBar } from '@ionic-native/status-bar';
+import { SplashScreen } from '@ionic-native/splash-screen';
 
 // import { HomePage } from '../pages/home/home';
 
@@ -12,12 +13,8 @@ import { StatusBar, Splashscreen } from 'ionic-native';
 export class MyApp {
   rootPage = MenuPage;
 
-  constructor(platform: Platform) {
-    platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
-      StatusBar.styleDefault();
-      Splashscreen.hide();
-    });
+  constructor(private splashScreen: SplashScreen, private statusBar: StatusBar) {
+   this.splashScreen.hide();
+   this.statusBar.hide();
   }
 }

@@ -5,7 +5,7 @@ import { PlacesService } from './../../providers/places-service';
 import { Component, ViewChild } from '@angular/core';
 import { Platform, ViewController } from 'ionic-angular';
 import { NavController, ModalController } from 'ionic-angular';
-import { Geolocation } from 'ionic-native';
+import { Geolocation } from '@ionic-native/geolocation';
 
 declare var google: any;
 
@@ -32,7 +32,8 @@ export class SearchPage {
     private modalCtrl: ModalController,
     private platform: Platform,
     public viewCtrl: ViewController,
-    private service: PlacesService
+    private service: PlacesService,
+    private geolocation: Geolocation
   ) {
 
     platform.ready().then(() => {
@@ -72,23 +73,6 @@ export class SearchPage {
   viewPlaces() {
     this.navCtrl.push(SearchPlacesPage);
   }
-/*
-   getPlaces(tipo, onde) {
-    this.service.getSearch(tipo, onde).then(    
-      response => {
-       //console.log(response.results)
-       console.log(response),
-       this.items = response.results
-      });
-  }
-*/
-  /* changeType(){
-     
-     this.getPlaces(this.tipo, this.onde);
-    // localStorage.setItem('tipo', this.tipo);
-   //  this.navCtrl.push(PlacesPage);   
-     console.log("home changeType: "+this.tipo);
-   }*/
 
   // change the type
   setType() {
@@ -101,7 +85,7 @@ export class SearchPage {
   // begin map 
   initMap() {
 
-    Geolocation.getCurrentPosition({enableHighAccuracy:true, timeout:5000, maximumAge:0}).then((position) => {
+    this.geolocation.getCurrentPosition({enableHighAccuracy:true, timeout:5000, maximumAge:0}).then((position) => {
       let lat = position.coords.latitude;
       let long = position.coords.longitude;
 

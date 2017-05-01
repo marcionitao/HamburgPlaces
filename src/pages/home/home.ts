@@ -3,7 +3,7 @@ import { PlacesService } from './../../providers/places-service';
 import { Component, ViewChild } from '@angular/core';
 import { Platform, ViewController } from 'ionic-angular';
 import { NavController, ModalController } from 'ionic-angular';
-import { Geolocation } from 'ionic-native';
+import { Geolocation } from '@ionic-native/geolocation';
 
 /**
  In this page is defined the map with my location and an option to choose the type of business for the search
@@ -30,7 +30,8 @@ export class HomePage {
     private modalCtrl: ModalController,
     private platform: Platform,
     public viewCtrl: ViewController,
-    private service: PlacesService
+    private service: PlacesService,
+    private geolocation: Geolocation
   ) {
 
     platform.ready().then(() => {
@@ -76,7 +77,7 @@ export class HomePage {
   // begin map 
   initMap() {
 
-    Geolocation.getCurrentPosition({enableHighAccuracy:true, timeout:5000, maximumAge:0}).then((position) => {
+    this.geolocation.getCurrentPosition({enableHighAccuracy:true, timeout:5000, maximumAge:0}).then((position) => {
     //Geolocation.watchPosition().subscribe((position) => {
       let lat = position.coords.latitude;
       let long = position.coords.longitude;

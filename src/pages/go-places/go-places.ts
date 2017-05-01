@@ -4,7 +4,7 @@ import { PlacesService } from './../../providers/places-service';
 import { Component, ViewChild } from '@angular/core';
 import { Platform, ViewController } from 'ionic-angular';
 import { NavController, ModalController, NavParams } from 'ionic-angular';
-import { Geolocation } from 'ionic-native';
+import { Geolocation } from '@ionic-native/geolocation';
 
 /*
   On this page we obtain a map and a route between Eu and the establishment from PlacesPage
@@ -36,7 +36,8 @@ export class GoPlacesPage {
     private platform: Platform,
     public viewCtrl: ViewController,
     private service: PlacesService,
-    public navParams: NavParams
+    public navParams: NavParams,
+    private geolocation: Geolocation
   ) {
 
     platform.ready().then(() => {
@@ -79,7 +80,7 @@ export class GoPlacesPage {
 
     // get my location
    //Geolocation.getCurrentPosition().then((position) => {
-     Geolocation.watchPosition().subscribe((position) => {
+     this.geolocation.watchPosition().subscribe((position) => {
       // this.onde = "home";
       this.directionsDisplay = new google.maps.DirectionsRenderer();
 
@@ -102,7 +103,7 @@ export class GoPlacesPage {
     }, (err) => {
       console.log(err);
     });
-
+    
   }
 
   // calc e trace route
