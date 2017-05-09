@@ -1,11 +1,8 @@
 import { MenuPage } from './../pages/menu/menu';
 import { Component } from '@angular/core';
-//import { Platform } from 'ionic-angular';
+import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
-// import { HomePage } from '../pages/home/home';
-
 
 @Component({
   templateUrl: 'app.html'
@@ -13,8 +10,12 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 export class MyApp {
   rootPage = MenuPage;
 
-  constructor(private splashScreen: SplashScreen, private statusBar: StatusBar) {
-   this.splashScreen.hide();
-   this.statusBar.hide();
+  constructor(private splashScreen: SplashScreen,
+    private platform: Platform,
+    private statusBar: StatusBar) {
+    platform.ready().then(() => {
+      this.splashScreen.show();
+      this.statusBar.show();
+    })
   }
 }

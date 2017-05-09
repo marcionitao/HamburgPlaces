@@ -67,7 +67,7 @@ export class PlacesPage {
   // Show a msg Box as Tipo not found!
   presentAlert(tipo) {
     let alert = this.alertCtrl.create({
-      title: tipo,
+      //title: tipo,
       subTitle: 'Leider, Diese Art ist nicht an diesem Speicherort vorhanden. Legen Sie eine neue Art',
       buttons: ['Ok']
     });

@@ -13,9 +13,55 @@
     <ion-item *virtualItem="let item" (click)='goPlace(item)'>-->
   <ion-list>
     <ion-item *ngFor="let item of items" (click)='goPlace(item)'>
-      <ion-icon *ngIf="item.icon" item-left>
+      <!-- <ion-icon *ngIf="item.icon" item-left>
         <img src="{{ item.icon }}" id="icon">
+      </ion-icon>-->
+
+      <ion-icon *ngIf="item.icon == 'https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png'" item-left>
+        <img src="assets/img/restaurant.jpg">
       </ion-icon>
+
+      <ion-icon *ngIf="item.icon == 'https://maps.gstatic.com/mapfiles/place_api/icons/cafe-71.png'" item-left>
+        <img src="assets/img/food.jpg">
+      </ion-icon>
+
+      <ion-icon *ngIf="item.icon == 'https://maps.gstatic.com/mapfiles/place_api/icons/bar-71.png'" item-left>
+        <img src="assets/img/bar.jpg">
+      </ion-icon>
+
+      <ion-icon *ngIf="item.icon == 'https://maps.gstatic.com/mapfiles/place_api/icons/shopping-71.png'" item-left>
+        <img src="assets/img/store.jpg">
+      </ion-icon>
+
+      <ion-icon *ngIf="item.icon == 'https://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png'" item-left>
+        <img src="assets/img/general.jpg">
+      </ion-icon>
+
+      <ion-icon *ngIf="item.icon == 'https://maps.gstatic.com/mapfiles/place_api/icons/museum-71.png'" item-left>
+        <img src="assets/img/museum.jpg">
+      </ion-icon>
+
+      <ion-icon *ngIf="item.icon == 'https://maps.gstatic.com/mapfiles/place_api/icons/doctor-71.png'" item-left>
+        <img src="assets/img/hospital.jpg">
+      </ion-icon>
+
+      <ion-icon *ngIf="item.icon == 'https://maps.gstatic.com/mapfiles/place_api/icons/atm-71.png'" item-left>
+        <img src="assets/img/atm.jpg">
+      </ion-icon>
+
+      <ion-icon *ngIf="item.icon == 'https://maps.gstatic.com/mapfiles/place_api/icons/bank_dollar-71.png'" item-left>
+        <img src="assets/img/bank.jpg">
+      </ion-icon>
+
+      <ion-icon *ngIf="item.icon == 'https://maps.gstatic.com/mapfiles/place_api/icons/school-71.png'" item-left>
+        <img src="assets/img/school.jpg">
+      </ion-icon>
+
+       <ion-icon *ngIf="item.icon == 'https://maps.gstatic.com/mapfiles/place_api/icons/lodging-71.png'" item-left>
+        <img src="assets/img/alojamento.jpg">
+      </ion-icon>
+
+
       <p id="title">{{ item.name }}</p>
       <p ion-text color="#a9a9a9">{{ item.formatted_address }}</p>
       <!-- Error: undefined open_now - Solved with operator Elvis '?'-->

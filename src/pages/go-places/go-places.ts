@@ -83,7 +83,7 @@ export class GoPlacesPage {
 
     // get my location
    //this.geolocation.getCurrentPosition({enableHighAccuracy:true, timeout:5000, maximumAge:0}).then((position) => {
-    this.geolocation.watchPosition({enableHighAccuracy:true, timeout:5000, maximumAge:0}).subscribe((position) => {
+    this.geolocation.watchPosition({enableHighAccuracy: false, timeout: 3000, maximumAge: 0 }).subscribe((position) => {
       // this.onde = "home";
       this.directionsDisplay = new google.maps.DirectionsRenderer();
 
@@ -156,7 +156,7 @@ export class GoPlacesPage {
  
   // Return to homePage  
   retunrHome() {
-    this.watch.unsubscribe();
+   // this.watch.unsubscribe();
     this.navCtrl.popToRoot();
   }
 

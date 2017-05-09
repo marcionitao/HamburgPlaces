@@ -38,7 +38,7 @@ export class HomePage {
       this.initMap();
       this.getDefaults();
       // this.service.geoCode();
-  
+
     })
 
   }
@@ -53,32 +53,32 @@ export class HomePage {
   }
 
   // value pré-default to type
-  getDefaults(){
-  if (localStorage.getItem('tipo') != null){
+  getDefaults() {
+    if (localStorage.getItem('tipo') != null) {
       this.tipo = localStorage.getItem('tipo');
-    } else{
+    } else {
       this.tipo = 'restaurant';
     }
-    console.log("home default: "+this.tipo);
+    console.log("home default: " + this.tipo);
   }
 
   // show all places
- viewPlaces() {
+  viewPlaces() {
     this.navCtrl.push(PlacesPage);
   }
 
   // change the type
-  setType(){    
-     //this.service.getPlaces(this.type);
-     localStorage.setItem('tipo', this.tipo);
-     this.navCtrl.push(PlacesPage);   
-}
-  
+  setType() {
+    //this.service.getPlaces(this.type);
+    localStorage.setItem('tipo', this.tipo);
+    this.navCtrl.push(PlacesPage);
+  }
+
   // begin map 
   initMap() {
 
-    this.geolocation.getCurrentPosition({enableHighAccuracy:true, timeout:5000, maximumAge:0}).then((position) => {
-    //Geolocation.watchPosition().subscribe((position) => {
+    this.geolocation.getCurrentPosition({enableHighAccuracy: false, timeout: 3000, maximumAge: 0}).then((position) => {
+      //Geolocation.watchPosition().subscribe((position) => {
       let lat = position.coords.latitude;
       let long = position.coords.longitude;
 

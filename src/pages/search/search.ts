@@ -85,7 +85,7 @@ export class SearchPage {
   // begin map 
   initMap() {
 
-    this.geolocation.getCurrentPosition({enableHighAccuracy:true, timeout:5000, maximumAge:0}).then((position) => {
+    this.geolocation.getCurrentPosition({enableHighAccuracy: false, timeout: 3000, maximumAge: 0}).then((position) => {
       let lat = position.coords.latitude;
       let long = position.coords.longitude;
 
