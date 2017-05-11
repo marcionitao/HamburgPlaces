@@ -16,5 +16,13 @@ page-places {
     height: 50px;
     -webkit-mask-image: -webkit-linear-gradient(top, rgba(0, 0, 0, .4), rgba(0, 0, 0, .4));
   }
+  #box {
+    width: 100%;
+  }
+  // aproxima icon do texto
+  .item-md ion-icon[item-left] + .item-inner,
+  .item-md ion-icon[item-left] + .item-input {
+   margin-left: 0px; 
+}
  
 }

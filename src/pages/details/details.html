@@ -1,0 +1,60 @@
+<ion-header>
+
+  <ion-navbar color="danger">
+    <ion-title>{{item.name}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+
+  <ion-card>
+    <ion-item *ngIf="item.photos!==undefined">
+      <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference={{ item.photos[0].photo_reference }}&key=AIzaSyBWfyDuBv8M_UbnXQhqBVYMET-12HSSdA0"
+        id="photo">
+    </ion-item>
+
+    <ion-card-content>
+
+      <ion-row>
+        <ion-col *ngIf="item.rating !== undefined">
+          <button ion-button icon-left small color="light" ion-button outline id="box"><ion-icon name="thumbs-up" color="secondary" *ngIf="item.rating != undefined" ion-text text-center> {{ item.rating }}</ion-icon></button>
+        </ion-col>
+        <ion-col>
+          <button ion-button icon-right small color="los" id="box" (click)='goPlace(item)'> Geht's Los! </button>
+        </ion-col>
+      </ion-row>
+
+      <ion-item *ngIf="item.vicinity !== undefined" no-padding>
+        <ion-icon name="home" item-left small></ion-icon>
+        {{ item.vicinity }}
+      </ion-item>
+
+      <ion-item *ngIf="phone !== undefined" no-padding>
+        <ion-icon name="call" item-left small></ion-icon>
+        {{ phone }}
+      </ion-item>
+
+      <ion-item *ngIf="website !== undefined" no-padding>
+        <ion-icon name="ios-information-circle-outline" item-left small></ion-icon>
+        {{website}}
+      </ion-item>
+
+    </ion-card-content>
+
+  </ion-card>
+
+  <ion-item >
+      <ion-list *ngIf="comments !== undefined">
+        <ion-title id="comment_title" ion-text text-center>Kommentarie</ion-title>
+        <ion-item *ngFor="let comment of comments">
+          <h3 id="title">{{ comment.author_name }}</h3>
+          <ion-item text-wrap id="comment_box">
+            {{ comment.text}}
+            <p id="data_visita"> {{ comment.relative_time_description}} </p>
+          </ion-item>
+        </ion-item>
+      </ion-list>
+    </ion-item>
+
+</ion-content>

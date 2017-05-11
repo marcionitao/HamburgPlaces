@@ -1,0 +1,35 @@
+page-details {
+  #photo {
+    position: center;
+    width: 100%;
+    height: 20%;
+  }
+  #title {
+    position: top;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #000;
+  }
+  #comment_box {
+    background-color: #C6E7CE;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+  }
+  #comment_title {
+    background-color: #84CF96;
+    font-size: 1.5em;
+    padding: 10px;
+  }
+  #data_visita {
+    font-style: italic;
+  }
+  #box {
+    width: 100%;
+  } 
+  // aproxima icon do texto
+  .item-md ion-icon[item-left]+.item-inner,
+  .item-md ion-icon[item-left]+.item-input {
+    margin-left: 0px;
+  }
+}

@@ -19,6 +19,7 @@ export class PlacesService {
   baseUrl: string = 'https://maps.googleapis.com/maps/api/place/nearbysearch';
   baseSearchUrl: string = "https://maps.googleapis.com/maps/api/place/textsearch";
   baseDirectionUrl: string = "https://maps.googleapis.com/maps/api/directions";
+  detailsUrl: string = "https://maps.googleapis.com/maps/api/place/details/json?placeid=";
 
   constructor(public http: Http) {
     this.http = http;
@@ -38,25 +39,19 @@ export class PlacesService {
       .toPromise();// executa uma function e retorna JSON
   }
 
+  getdetails(details) {
+    return this.http.get(this.detailsUrl + details + '&key=' + this.key)
+      .map(res => res.json())
+      .toPromise();// executa uma function e retorna JSON
+  }
+
   getDirections(idPlace) {
     this.busca(this.lat, this.lon); // get my location and insert in URL
     return this.http.get(this.baseDirectionUrl + '/' + 'json?origin=' + this.lat + ',' + this.lon + 'destination=place_id:' + idPlace + '&key=' + this.keyDirection)
       .map(res => res.json())
       .toPromise();// executa uma function e retorna JSON
   }
-/*
-  geoCode(address) {
-     //let address = "Kedenburgstraße 7";
-     let geocoder = new google.maps.Geocoder();
- 
-     geocoder.geocode({ 'address': address }, (results, status) => {
-       let lat = results[0].geometry.location.lat();
-       let lon = results[0].geometry.location.lng();
-       this.lat = lat;
-       this.lon = lon;
-     });
-   }
-*/
+
   // get my location origem
   busca(lat, lon) {
     this.lat = lat;

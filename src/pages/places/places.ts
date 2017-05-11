@@ -1,6 +1,8 @@
 // import { HomePage } from './../home/home';
 import { GoPlacesPage } from './../go-places/go-places';
 import { PlacesService } from './../../providers/places-service';
+import { Details } from '../../pages/details/details';
+
 import { Component } from '@angular/core';
 import { NavController, NavParams, Platform } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
@@ -60,6 +62,13 @@ export class PlacesPage {
   // Show Route in map for each item 
   goPlace(item) {
     this.navCtrl.push(GoPlacesPage, {
+      item: item
+    });
+  }
+
+   // pega todos os dados json e envia para a page Details
+  goDetails(item){
+    this.navCtrl.push(Details, {
       item: item
     });
   }

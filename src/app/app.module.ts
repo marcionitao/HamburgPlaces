@@ -7,6 +7,7 @@ import { SearchPlacesPage } from './../pages/search-places/search-places';
 import { PlacesService } from './../providers/places-service';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { Details } from '../pages/details/details';
 
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
@@ -25,7 +26,8 @@ import { Geolocation } from '@ionic-native/geolocation';
     SearchPage,
     AboutPage,
     SearchPlacesPage,
-    GoPlacesPage
+    GoPlacesPage,
+    Details
   ],
   imports: [
     BrowserModule,
@@ -41,7 +43,8 @@ import { Geolocation } from '@ionic-native/geolocation';
     SearchPage,
     AboutPage,
     SearchPlacesPage,
-    GoPlacesPage
+    GoPlacesPage,
+    Details
   ],
   providers: [
     StatusBar,
