@@ -17,6 +17,8 @@ export class Details {
  website:any; // info about website
  phone:any;  // info about phone
  comments:any;
+ directions:any;
+ duration: any;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -26,7 +28,9 @@ export class Details {
     platform.ready().then(() => {
       this.item = navParams.get('item'); // irá possibilitar trazer os parametros de item ao involcar a DetailsPage
       this.getDetails(this.item.place_id); // pega o id do local lá do json e passa por parametro
-    })
+      this.getDirections(this.item.place_id);// pega o id do local lá do json e passa por parametro para encontrar a direcção
+  
+  })
   }
 
   getDetails(details) {
@@ -46,5 +50,16 @@ export class Details {
       item: item
     });
   }
+ // Get time and distance in Km
+   getDirections(idPlace){
+     this.service.getDirections(idPlace).then(
+      response => {   
+        console.log(response),
+        //console.log(response),
+          this.directions = response.routes[0].legs[0].distance.text,
+          this.duration = response.routes[0].legs[0].duration.text
+      });
+   }
+
 
 }

@@ -29,6 +29,7 @@ export class GoPlacesPage {
   origem: any; // get lat, lon from Address
   watch: any;
   marker: any;
+  unitSystem: any;
 
   directionsDisplay: any;
   directionsService: any;
@@ -82,8 +83,8 @@ export class GoPlacesPage {
     //--------------------end origem---------------------------
 
     // get my location
-   //this.geolocation.getCurrentPosition({enableHighAccuracy:true, timeout:5000, maximumAge:0}).then((position) => {
-    this.geolocation.watchPosition({enableHighAccuracy: false, timeout: 3000, maximumAge: 0 }).subscribe((position) => {
+   this.geolocation.getCurrentPosition({enableHighAccuracy:false, timeout:3000, maximumAge:0}).then((position) => {
+    //this.geolocation.watchPosition({enableHighAccuracy: false, timeout: 3000, maximumAge: 0 }).subscribe((position) => {
       // this.onde = "home";
       this.directionsDisplay = new google.maps.DirectionsRenderer();
 
@@ -99,7 +100,7 @@ export class GoPlacesPage {
       this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
       this.directionsDisplay.setMap(this.map);
       
-      this.directionsDisplay.setPanel(document.getElementById('directionsPanel'));
+     // this.directionsDisplay.setPanel(document.getElementById('directionsPanel'));
       // call function for calc route
       this.calcRoute();
 
@@ -130,6 +131,7 @@ export class GoPlacesPage {
         destination: this.destino,
         travelMode: selectedMode,
         provideRouteAlternatives: true,
+        unitSystem: google.maps.UnitSystem.IMPERIAL
 
       };
       this.directionsService.route(request, (response, status) => {

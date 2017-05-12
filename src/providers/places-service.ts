@@ -10,6 +10,7 @@ export class PlacesService {
 
   lat: number = 53.550513;
   lon: number = 9.994241;
+  distance: any;
   address: any;
   idPlace: any;
   onde: any;
@@ -47,7 +48,7 @@ export class PlacesService {
 
   getDirections(idPlace) {
     this.busca(this.lat, this.lon); // get my location and insert in URL
-    return this.http.get(this.baseDirectionUrl + '/' + 'json?origin=' + this.lat + ',' + this.lon + 'destination=place_id:' + idPlace + '&key=' + this.keyDirection)
+    return this.http.get(this.baseDirectionUrl + '/' + 'json?origin=' + this.lat + ',' + this.lon + '&destination=place_id:' + idPlace + '&key=' + this.keyDirection)
       .map(res => res.json())
       .toPromise();// executa uma function e retorna JSON
   }
@@ -58,5 +59,4 @@ export class PlacesService {
     this.lon = lon;
     //console.log("lat: " + lat + ", long: " + lon);
   }
-
 }

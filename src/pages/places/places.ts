@@ -19,7 +19,7 @@ export class PlacesPage {
 
   items: any;
   tipo: string;
-
+ 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     private service: PlacesService,
@@ -29,8 +29,6 @@ export class PlacesPage {
     platform.ready().then(() => {
       this.getDefaults();
       this.getPlaces(this.tipo);
-
-      // this.service.geoCode();
     })
 
   }
@@ -56,7 +54,6 @@ export class PlacesPage {
         console.log(response.results),
           this.items = response.results
       });
-
   }
 
   // Show Route in map for each item 

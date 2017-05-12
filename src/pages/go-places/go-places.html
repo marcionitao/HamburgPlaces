@@ -3,7 +3,7 @@
   <ion-navbar color="danger">
     <ion-title id="title">Gehen Sie Platz</ion-title>
      <ion-buttons right>
-      <button ion-button (click)="retunrHome()"><ion-icon name="home" normal></ion-icon></button>
+      <button ion-button (click)="retunrHome()" large><ion-icon name="home" id="icon"></ion-icon></button>
     </ion-buttons>
   </ion-navbar>
 
@@ -27,13 +27,13 @@
 </ion-header>
 
 <ion-content>
- 
+<!-- 
   <ion-card>  
      <ion-card-content>
         <div #direction id="directionsPanel"></div>
      </ion-card-content>
   </ion-card> 
-
+-->
   <div #map id="map"></div>
 
 </ion-content>

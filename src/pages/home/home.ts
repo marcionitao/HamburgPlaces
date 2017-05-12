@@ -43,10 +43,6 @@ export class HomePage {
 
   }
 
-  /*ionViewDidLoad() {
-    this.initMap();
-  }*/
-
   dismiss() {
     // this.viewCtrl.dismiss();
     this.viewCtrl.dismiss().catch(() => { });
