@@ -19,6 +19,7 @@ export class PlacesPage {
 
   items: any;
   tipo: string;
+  idPlace:any;
  
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -30,7 +31,6 @@ export class PlacesPage {
       this.getDefaults();
       this.getPlaces(this.tipo);
     })
-
   }
   // value pré-default to type
   getDefaults() {
