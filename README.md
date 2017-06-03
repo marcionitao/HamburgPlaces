@@ -6,8 +6,10 @@ HamburgPlaces is a mobile application that aims to present the best in the city 
 
 Tecnologias:
 - IONIC Framework
+- AngularJS
 - Cordova
 - Android
 - Google maps API
 - Google places API
 - Google direction API
+

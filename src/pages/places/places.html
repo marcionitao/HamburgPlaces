@@ -14,7 +14,7 @@
 
     <ion-item-sliding *ngFor="let item of items">
       <ion-item>
-
+        <!--begin to change icons get from Google -->
         <ion-icon *ngIf="item.icon == 'https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png'" item-left>
           <img src="assets/img/restaurant.jpg">
         </ion-icon>
@@ -58,6 +58,7 @@
         <ion-icon *ngIf="item.icon == 'https://maps.gstatic.com/mapfiles/place_api/icons/lodging-71.png'" item-left>
           <img src="assets/img/alojamento.jpg">
         </ion-icon>
+        <!--end to change icons get from Google -->
 
         <p id="title">{{ item.name }}</p>
         <p ion-text color="#a9a9a9">{{ item.vicinity }}</p>
