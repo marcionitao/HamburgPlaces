@@ -1,5 +1,5 @@
 //import { HomePage } from './../home/home';
-// import { PlacesPage } from './../places/places';
+import { PlacesPage } from './../places/places';
 import { PlacesService } from './../../providers/places-service';
 import { Component, ViewChild } from '@angular/core';
 import { Platform, ViewController } from 'ionic-angular';
@@ -46,6 +46,7 @@ export class GoPlacesPage {
     platform.ready().then(() => {
       this.item = navParams.get('item'); // irá possibilitar trazer os parametros de item ao involcar a DetailsPage
       this.initMap();
+     // console.log("valor do item enviado: "+this.item);
     })
   }
 
@@ -63,33 +64,36 @@ export class GoPlacesPage {
     // get per params lat and long from PlacesPage.ts
     let lt = this.item.geometry.location.lat;
     let lo = this.item.geometry.location.lng;
+
+    console.log(lt+" - "+lo);
     // define destino
     this.destino = new google.maps.LatLng(lt, lo);
 
     //-----------begin origem-----------------------------------
     // Pass onde per params from SearchPlaces
-    this.onde = this.navParams.get('onde');
+    /*this.onde = this.navParams.get('onde');
 
     let address = this.onde;
     let geocoder = new google.maps.Geocoder();
-   
+    console.log(this.onde);
     // get address and tranformer in lat, lon
     geocoder.geocode({ 'address': address }, (results, status) => {
       let lat = results[0].geometry.location.lat();
       let lon = results[0].geometry.location.lng();
       this.origem = new google.maps.LatLng(lat, lon);
+     
     });
-
+*/
     //--------------------end origem---------------------------
 
     // get my location
    this.geolocation.getCurrentPosition({enableHighAccuracy:false, timeout:3000, maximumAge:0}).then((position) => {
     //this.geolocation.watchPosition({enableHighAccuracy: false, timeout: 3000, maximumAge: 0 }).subscribe((position) => {
-      // this.onde = "home";
+     // this.onde = "home";
       this.directionsDisplay = new google.maps.DirectionsRenderer();
 
       this.myOrigem = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-
+      console.log(this.myOrigem);
       let mapOptions = {
         center: this.origem,
         zoom: 13,
@@ -122,7 +126,8 @@ export class GoPlacesPage {
     let selectedMode = this.mode;
 
     // Condition for validate which maps-route show. MyLocation or outro Adress
-    if (this.onde != undefined) {
+    if (this.onde !== undefined) {
+      console.log("valor de onde: "+this.onde);
       let request = {
         /* origin: {'placeId': origin_place_id},
          destination: {'placeId': destination_place_id},*/

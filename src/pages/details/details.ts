@@ -59,7 +59,5 @@ export class Details {
           this.directions = response.routes[0].legs[0].distance.text,
           this.duration = response.routes[0].legs[0].duration.text
       });
-   }
-
-
+   } 
 }

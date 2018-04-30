@@ -34,12 +34,12 @@ export class SearchPlacesPage {
   }
   // value pré-default to type
   getDefaults() {
-    if (localStorage.getItem('onde') != null) {
+    if (localStorage.getItem('onde') !== null) {
       this.onde = localStorage.getItem('onde');
     } else {
       this.onde = 'st.pauli';
     }
-    if (localStorage.getItem('tipo') != null) {
+    if (localStorage.getItem('tipo') !== null) {
       this.tipo = localStorage.getItem('tipo');
     } else {
       this.tipo = 'restaurant';

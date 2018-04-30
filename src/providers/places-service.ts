@@ -59,4 +59,5 @@ export class PlacesService {
     this.lon = lon;
     //console.log("lat: " + lat + ", long: " + lon);
   }
+
 }
