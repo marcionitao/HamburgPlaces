@@ -1,5 +1,5 @@
 //import { HomePage } from './../home/home';
-import { PlacesPage } from './../places/places';
+//import { PlacesPage } from './../places/places';
 import { PlacesService } from './../../providers/places-service';
 import { Component, ViewChild } from '@angular/core';
 import { Platform, ViewController } from 'ionic-angular';
